@@ -36,6 +36,7 @@ export interface CarData {
   deposit: {
     no_deposit_fee: string;
     security: string;
+    security_deposit?: string;
   };
   brand: string;
   car_type: string;
@@ -78,4 +79,5 @@ export interface CarCardData {
   images: string[];
   thumbnail: string;
 }
+
 

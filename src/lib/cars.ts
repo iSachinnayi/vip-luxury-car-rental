@@ -95,7 +95,10 @@ function enhanceCarWithDealPsychology(car: CarData): CarCardData {
       original_per_week: car.km_limits.per_week ? String(Math.round(parseInt(car.km_limits.per_week) / DISCOUNT_CONFIG.km_upgrade)) : undefined,
       original_per_month: car.km_limits.per_month ? String(Math.round(parseInt(car.km_limits.per_month) / DISCOUNT_CONFIG.km_upgrade)) : undefined,
     },
-    deposit: car.deposit,
+    deposit: {
+      no_deposit_fee: car.deposit.no_deposit_fee,
+      security: car.deposit.security_deposit || car.deposit.security || "5000",
+    },
     brand: car.brand,
     car_type: car.car_type,
     categories: car.categories,
