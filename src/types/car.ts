@@ -1,6 +1,6 @@
-// ═══════════════════════════════════════════════
+﻿// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 //  Shared Types for VIP Luxury Car Rental
-// ═══════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 export interface CarData {
   id: number;
@@ -39,7 +39,7 @@ export interface CarData {
   };
   brand: string;
   car_type: string;
-  categories: string[];
+  categories: string[] | { name: string; slug?: string }[];
   images: string[];
   thumbnail: string;
   old_url: string;
@@ -53,6 +53,7 @@ export interface CarCardData {
     per_day: string;
     per_week: string;
     per_month: string;
+    per_hour?: string;
     original_per_day?: string;
     original_per_week?: string;
     original_per_month?: string;
@@ -73,7 +74,8 @@ export interface CarCardData {
   deposit: { no_deposit_fee: string; security: string };
   brand: string;
   car_type: string;
-  categories: string[];
+  categories: string[] | { name: string; slug?: string }[];
   images: string[];
   thumbnail: string;
 }
+

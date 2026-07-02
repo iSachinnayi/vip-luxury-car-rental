@@ -174,9 +174,12 @@ export default function CarCard({ car, index = 0 }: CarCardProps) {
             </Link>
             <div className="flex items-center gap-2 mt-1">
               <span className="text-xs text-gray-500">{car.brand}</span>
-              {car.categories.slice(0, 2).map((cat) => (
-                <span key={cat} className="text-xs text-gray-600">· {cat}</span>
-              ))}
+              {car.categories.slice(0, 2).map((cat) => {
+                const catName = typeof cat === "string" ? cat : cat.name;
+                return (
+                  <span key={catName} className="text-xs text-gray-600">· {catName}</span>
+                );
+              })}
             </div>
             {/* Animated Divider */}
             <motion.div
