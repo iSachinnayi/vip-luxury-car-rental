@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="#141414"/>
+  <rect x="40" y="45" width="120" height="80" rx="8" fill="#2A2A2A" stroke="#C8A951" stroke-width="1"/>
+  <circle cx="100" cy="85" r="20" fill="#C8A951" opacity="0.3"/>
+  <rect x="55" y="135" width="90" height="3" rx="1.5" fill="#2A2A2A"/>
+  <rect x="65" y="143" width="70" height="2" rx="1" fill="#2A2A2A"/>
+  <text x="100" y="165" text-anchor="middle" fill="#C8A951" font-size="8" font-family="sans-serif">VIP Luxury Car Rental</text>
+</svg>
