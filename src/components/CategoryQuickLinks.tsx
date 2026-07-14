@@ -4,7 +4,7 @@
 // ═══════════════════════════════════════════════
 
 import { Link } from "@/i18n/routing";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 import { getAllCars } from "@/lib/cars";
 
 interface CategoryQuickLinksProps {
@@ -13,10 +13,10 @@ interface CategoryQuickLinksProps {
 
 const CATEGORIES = ["Sports", "Luxury", "SUV"] as const;
 
-const CATEGORY_LABELS: Record<string, string> = {
-  Sports: "Sports Cars",
-  Luxury: "Luxury Cars",
-  SUV: "SUV Cars",
+const CATEGORY_LABELS: Record<string, { en: string; ar: string }> = {
+  Sports: { en: "Sports Cars", ar: "السيارات الرياضية" },
+  Luxury: { en: "Luxury Cars", ar: "السيارات الفاخرة" },
+  SUV: { en: "SUV Cars", ar: "سيارات الدفع الرباعي" },
 };
 
 const ICONS: Record<string, React.ReactNode> = {
@@ -39,6 +39,8 @@ const ICONS: Record<string, React.ReactNode> = {
 
 export default async function CategoryQuickLinks({ emirateSlug }: CategoryQuickLinksProps) {
   const t = await getTranslations("allCars");
+  const locale = await getLocale();
+  const isAr = locale === "ar";
   const allCars = getAllCars();
   const catCounts = {
     Sports: allCars.filter((c) => c.car_type === "Sports").length,
@@ -63,7 +65,7 @@ export default async function CategoryQuickLinks({ emirateSlug }: CategoryQuickL
               </div>
               <div className="min-w-0">
                 <div className="text-white font-semibold text-sm sm:text-base group-hover:text-gold transition-colors">
-                  {CATEGORY_LABELS[cat] || cat}
+                  {isAr ? (CATEGORY_LABELS[cat]?.ar || cat) : (CATEGORY_LABELS[cat]?.en || cat)}
                 </div>
                 <div className="text-gray-500 text-xs sm:text-sm">
                   {t("vehiclesAvailable", { count: catCounts[cat] })}
