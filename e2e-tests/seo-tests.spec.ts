@@ -14,7 +14,6 @@ const SSR_PAGES = [
   { path: "/terms/", titleHint: "Terms" },
   { path: "/car/lamborghini-urus/", titleHint: "Lamborghini Urus" },
   { path: "/rent-lamborghini-in-dubai/", titleHint: "Lamborghini" },
-  { path: "/location/dubai/", titleHint: "Dubai" },
 ];
 
 for (const page of SSR_PAGES) {
