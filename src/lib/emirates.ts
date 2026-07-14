@@ -21,54 +21,6 @@ export interface Emirate {
 
 export const EMIRATES: Emirate[] = [
   {
-    slug: "dubai",
-    name: "Dubai",
-    nameAr: "دبي",
-    description:
-      "Experience the glittering metropolis of Dubai with VIP Luxury Car Rental. From the iconic Burj Khalifa and the sprawling Dubai Mall to the Palm Jumeirah and Dubai Marina, cruise through the city's most prestigious destinations in unparalleled style. Our premium fleet of 350+ luxury, sports, and exotic cars ensures your Dubai experience is nothing short of extraordinary.",
-    descriptionAr:
-      "استمتع بمدينة دبي البراقة مع خدمة تأجير السيارات الفاخرة لكبار الشخصيات. من برج خليفة الأيقوني ودبي مول الشاسع إلى نخلة جميرا ومرسى دبي، تجول في أجمل وجهات المدينة بأناقة لا مثيل لها. يضمن أسطولنا الفاخر الذي يضم أكثر من 350 سيارة فاخرة ورياضية أن تكون تجربتك في دبي استثنائية.",
-    intro:
-      "Dubai is the ultimate destination for luxury car rentals. Whether you are visiting for business, a family vacation, or a special celebration, renting a luxury car in Dubai transforms your experience. Our fleet includes Lamborghini, Ferrari, Rolls Royce, Bentley, Porsche, and more — all available with complimentary delivery to your hotel, villa, or airport terminal anywhere in Dubai.",
-    introAr:
-      "دبي هي الوجهة المثالية لتأجير السيارات الفاخرة. سواء كنت تزورها للأعمال أو لقضاء عطلة عائلية أو احتفال خاص، فإن استئجار سيارة فاخرة في دبي يغير تجربتك تمامًا. يضم أسطولنا لامبورغيني وفيراري ورولز رويس وبنتلي وبورشه والمزيد — جميعها متاحة مع توصيل مجاني إلى فندقك أو فيلتك أو مطارك في أي مكان في دبي.",
-    attractions: [
-      "Burj Khalifa — The world's tallest building with observation decks on levels 124, 125, and 148",
-      "The Dubai Mall — One of the world's largest shopping and entertainment destinations",
-      "Palm Jumeirah — Iconic artificial archipelago with luxury hotels and residences",
-      "Dubai Marina — A stunning waterfront district with dining and nightlife",
-      "Mall of the Emirates — Premier shopping destination with indoor ski slope",
-      "Dubai Creek — Historic heart of the city with traditional souks and abras",
-      "Jumeirah Beach — Pristine white sand beaches with clear turquoise waters",
-      "Dubai Frame — A landmark offering panoramic views of old and new Dubai",
-    ],
-    attractionsAr: [
-      "برج خليفة — أطول مبنى في العالم مع منصات مشاهدة في الطوابق 124 و125 و148",
-      "دبي مول — واحد من أكبر وجهات التسوق والترفيه في العالم",
-      "نخلة جميرا — أرخبيل اصطناعي أيقوني يضم فنادق ومنتجعات فاخرة",
-      "مرسى دبي — منطقة واجهة بحرية مذهلة مع المطاعم والحياة الليلية",
-      "مول الإمارات — وجهة تسوق رئيسية مع منحدر تزلج داخلي",
-      "خور دبي — القلب التاريخي للمدينة مع الأسواق التقليدية",
-      "شاطئ جميرا — شواطئ رملية بيضاء نقية مع مياه فيروزية صافية",
-      "إطار دبي — معلم يوفر إطلالات بانورامية على دبي القديمة والجديدة",
-    ],
-    deliveryNote:
-      "Free delivery and pickup across all Dubai locations including Dubai Marina, Downtown Dubai, Palm Jumeirah, Dubai International Airport (DXB), and Al Maktoum Airport (DWC). We deliver to hotels, residences, and any location within Dubai city limits.",
-    airports: ["Dubai International Airport (DXB)", "Al Maktoum International Airport (DWC)"],
-    metaDesc:
-      "Rent luxury cars in Dubai with VIP Luxury Car Rental. Sports cars, SUVs & premium sedans delivered free to your hotel. Lamborghini, Ferrari, Rolls Royce & more. Full insurance & 24/7 support. Book your dream car today!",
-    keywords: [
-      "luxury car rental Dubai",
-      "rent sports car Dubai",
-      "exotic car rental Dubai",
-      "luxury car hire Dubai",
-      "premium car rental Dubai",
-      "supercar rental Dubai",
-      "Lamborghini rental Dubai",
-      "Ferrari rental Dubai",
-    ],
-  },
-  {
     slug: "abu-dhabi",
     name: "Abu Dhabi",
     nameAr: "أبو ظبي",
