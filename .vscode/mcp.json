@@ -1,0 +1,20 @@
+{
+  "inputs": [],
+  "servers": {
+    "fetch": {
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "@modelcontextprotocol/server-fetch"]
+    },
+    "filesystem": {
+      "command": "cmd",
+      "args": [
+        "/c", "npx", "-y", "@modelcontextprotocol/server-filesystem",
+        "C:\\Users\\iSach\\Desktop\\VIP Site AI Project\\vip-luxury-car-rental"
+      ]
+    },
+    "sequential-thinking": {
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "@modelcontextprotocol/server-sequential-thinking"]
+    }
+  }
+}

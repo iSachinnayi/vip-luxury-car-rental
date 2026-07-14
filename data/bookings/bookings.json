@@ -1,0 +1,150 @@
+[
+  {
+    "id": "BK-1783281648629-UJ3X",
+    "status": "pending",
+    "createdAt": "2026-07-05T20:00:48.629Z",
+    "car": {
+      "slug": "audi-rs-q8",
+      "title": "Audi RS Q8"
+    },
+    "customer": {
+      "name": "sachin nayi",
+      "phone": "9409469399",
+      "email": "sachinnayi@gmail.com",
+      "notes": "No"
+    },
+    "rental": {
+      "pickup": {
+        "location": "Dubai",
+        "date": "2026-07-06",
+        "time": "10:00"
+      },
+      "drop": {
+        "location": "Dubai",
+        "date": "2026-07-07",
+        "time": "10:00"
+      },
+      "days": 1,
+      "depositOption": "security"
+    },
+    "pricing": {
+      "currency": "AED",
+      "dayPrice": 990,
+      "rentalSubtotal": 990,
+      "taxAmount": 50,
+      "depositFee": 0,
+      "grandTotal": 1040
+    }
+  },
+  {
+    "id": "VIP-0607-TYE",
+    "status": "pending",
+    "createdAt": "2026-07-05T20:06:01.270Z",
+    "car": {
+      "slug": "nissan-patrol-platinum-v8-2",
+      "title": "Nissan Patrol Platinum V8"
+    },
+    "customer": {
+      "name": "Sachin",
+      "phone": "+971 50 123 4567",
+      "email": "test@test.com",
+      "notes": null
+    },
+    "rental": {
+      "pickup": {
+        "location": "Dubai",
+        "date": "2026-07-06",
+        "time": "10:00"
+      },
+      "drop": {
+        "location": "Dubai",
+        "date": "2026-07-07",
+        "time": "10:00"
+      },
+      "days": 1,
+      "depositOption": "security"
+    },
+    "pricing": {
+      "currency": "AED",
+      "dayPrice": 360,
+      "rentalSubtotal": 360,
+      "taxAmount": 18,
+      "depositFee": 0,
+      "grandTotal": 378
+    }
+  },
+  {
+    "id": "VIP-1007-V4X",
+    "status": "pending",
+    "createdAt": "2026-07-09T21:36:38.761Z",
+    "car": {
+      "slug": "land-rover-defender-90-se-v6",
+      "title": "Land Rover Defender 90 SE V6"
+    },
+    "customer": {
+      "name": "Sachin Nayi",
+      "phone": "9409469399",
+      "email": "sachinnayi2013@gmail.com",
+      "notes": null
+    },
+    "rental": {
+      "pickup": {
+        "location": "Dubai",
+        "date": "2026-07-11",
+        "time": "10:00"
+      },
+      "drop": {
+        "location": "Dubai",
+        "date": "2026-07-11",
+        "time": "10:00"
+      },
+      "days": 1,
+      "depositOption": "noDeposit"
+    },
+    "pricing": {
+      "currency": "AED",
+      "dayPrice": 675,
+      "rentalSubtotal": 675,
+      "taxAmount": 34,
+      "depositFee": 200,
+      "grandTotal": 909
+    }
+  },
+  {
+    "id": "VIP-1407-Q9V",
+    "status": "pending",
+    "createdAt": "2026-07-13T21:23:49.348Z",
+    "car": {
+      "slug": "lamborghini-urus",
+      "title": "Lamborghini Urus"
+    },
+    "customer": {
+      "name": "sdasd",
+      "phone": "9409469399",
+      "email": "text@gmail.com",
+      "notes": null
+    },
+    "rental": {
+      "pickup": {
+        "location": "Dubai",
+        "date": "2026-07-15",
+        "time": "10:00"
+      },
+      "drop": {
+        "location": "Dubai",
+        "date": "2026-07-14",
+        "time": "10:00"
+      },
+      "days": 1,
+      "depositOption": "security"
+    },
+    "pricing": {
+      "currency": "AED",
+      "dayPrice": 2240,
+      "rentalSubtotal": 2240,
+      "taxAmount": 112,
+      "depositFee": 0,
+      "grandTotal": 2352
+    }
+  }
+]

@@ -1,0 +1,95 @@
+# VIP Luxury Car Rental Dubai — Complete Site Overview
+
+## Company
+VIP Luxury Car Rental Dubai is a premier luxury car rental service based in Dubai, UAE. We operate 24/7 with free delivery across all seven UAE emirates.
+
+## Contact
+- Phone: +971501564849
+- Email: booking@vipluxurycarrental.com
+- WhatsApp: https://wa.me/971501564849
+- Address: Al Barsha, Near Mall of Emirates, Dubai, UAE
+
+## Fleet
+We maintain a fleet of 350+ vehicles including:
+- **Sports Cars**: Lamborghini Huracan, Ferrari SF90, McLaren 720S, Porsche 911
+- **Luxury Sedans**: Rolls Royce Ghost, Bentley Flying Spur, Mercedes S-Class, BMW 7 Series
+- **Luxury SUVs**: Range Rover Vogue, Lamborghini Urus, Bentley Bentayga, Mercedes G63 AMG
+- **Exotic Vehicles**: Limited edition and specialty supercars
+
+## Pricing
+- Daily, weekly, and monthly rental options
+- Transparent pricing with no hidden fees
+- Security deposit required (refundable)
+- Multiple payment methods accepted
+
+## Insurance
+- Full comprehensive insurance included with every rental
+- Collision damage waiver (CDW) available
+- Extended protection options
+
+## Delivery
+- Free delivery and pickup across all UAE emirates
+- Airport delivery available (DXB, AUH, SHJ)
+- Hotel delivery to any Dubai hotel
+- Doorstep delivery anywhere in UAE
+
+## Requirements
+- Valid driving license (international license accepted for tourists)
+- Minimum age: 25 years (may vary by vehicle)
+- Passport copy for tourists
+- Emirates ID for residents
+- Security deposit via credit card or cash
+
+## Site Structure
+
+### Main Pages
+- Homepage: https://vipluxurycarrental.com/
+- All Cars: https://vipluxurycarrental.com/all-cars/
+- Brands: https://vipluxurycarrental.com/brand/
+- About: https://vipluxurycarrental.com/about/
+- FAQ: https://vipluxurycarrental.com/faq/
+- Contact: https://vipluxurycarrental.com/contact/
+- Privacy: https://vipluxurycarrental.com/privacy/
+- Terms: https://vipluxurycarrental.com/terms/
+
+### Brand Pages
+- Lamborghini: https://vipluxurycarrental.com/rent-lamborghini-in-dubai/
+- Ferrari: https://vipluxurycarrental.com/rent-ferrari-in-dubai/
+- Rolls Royce: https://vipluxurycarrental.com/rent-rolls-royce-in-dubai/
+- Bentley: https://vipluxurycarrental.com/rent-bentley-in-dubai/
+- Porsche: https://vipluxurycarrental.com/rent-porsche-in-dubai/
+- Mercedes: https://vipluxurycarrental.com/rent-mercedes-in-dubai/
+- BMW: https://vipluxurycarrental.com/rent-bmw-in-dubai/
+- Audi: https://vipluxurycarrental.com/rent-audi-in-dubai/
+- Range Rover: https://vipluxurycarrental.com/rent-range-rover-in-dubai/
+- Nissan: https://vipluxurycarrental.com/rent-nissan-in-dubai/
+- Chevrolet: https://vipluxurycarrental.com/rent-chevrolet-in-dubai/
+- McLaren: https://vipluxurycarrental.com/rent-mclaren-in-dubai/
+- Cadillac: https://vipluxurycarrental.com/rent-cadillac-in-dubai/
+- GMC: https://vipluxurycarrental.com/rent-gmc-in-dubai/
+- Toyota: https://vipluxurycarrental.com/rent-toyota-in-dubai/
+- Volkswagen: https://vipluxurycarrental.com/rent-volkswagen-in-dubai/
+- Mini Cooper: https://vipluxurycarrental.com/rent-mini-cooper-in-dubai/
+
+### Category Pages
+- Sports Cars: https://vipluxurycarrental.com/sports-car-rental-in-dubai/
+- Luxury Cars: https://vipluxurycarrental.com/luxury-car-rental-in-dubai/
+- SUV: https://vipluxurycarrental.com/suv-car-rental-in-dubai/
+
+### Location Pages
+- Dubai: https://vipluxurycarrental.com/location/dubai/
+- Abu Dhabi: https://vipluxurycarrental.com/location/abu-dhabi/
+- All emirates with brand and category sub-pages
+
+### Car Detail Pages (109+)
+- Pattern: https://vipluxurycarrental.com/car/{slug}/
+- Each with full specs, pricing, images, booking
+
+### Booking Pages (109+)
+- Pattern: https://vipluxurycarrental.com/booking/{slug}/
+
+## SEO
+- Multilingual: English, Arabic, Russian
+- Sitemap: https://vipluxurycarrental.com/sitemap.xml
+- Schema.org: Organization, AutoRental, WebSite, Product, Vehicle, BreadcrumbList, FAQPage, ItemList
+- Robots.txt: Allowed for all search and AI bots

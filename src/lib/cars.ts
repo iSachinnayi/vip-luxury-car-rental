@@ -3,6 +3,7 @@
 // ═══════════════════════════════════════════════
 
 import type { CarCardData, CarData } from "@/types/car";
+import { getCarImages } from "./images";
 import fs from "fs";
 import path from "path";
 
@@ -31,8 +32,8 @@ export function getAllCars(): CarCardData[] {
       cachedCars = cars.map(enhanceCarWithDealPsychology);
       return cachedCars!;
     }
-  } catch {
-    // Fall through to sample data
+  } catch (err) {
+    console.error("Failed to load car data:", err);
   }
 
   // Fallback: return empty (will be populated from API later)
@@ -69,6 +70,9 @@ function enhanceCarWithDealPsychology(car: CarData): CarCardData {
   const weekPrice = parseInt(car.pricing.per_week || "0");
   const monthPrice = parseInt(car.pricing.per_month || "0");
 
+  // Load real images from the image map
+  const carImages = getCarImages(car.id);
+
   return {
     id: car.id,
     title: car.title,
@@ -102,7 +106,8 @@ function enhanceCarWithDealPsychology(car: CarData): CarCardData {
     brand: car.brand,
     car_type: car.car_type,
     categories: car.categories,
-    images: car.images,
-    thumbnail: car.thumbnail || car.images?.[0] || "",
+    images: carImages.gallery,
+    thumbnail: carImages.thumbnail || car.images?.[0] || "",
+    excerpt: car.excerpt || "",
   };
 }

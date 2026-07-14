@@ -1,0 +1,23 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#1a1a1a"/>
+  <rect x="0" y="0" width="800" height="600" fill="url(#grad)" fill-opacity="0.3"/>
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#C8A951" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#C8A951" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g opacity="0.3">
+    <rect x="300" y="200" width="200" height="130" rx="10" stroke="#C8A951" stroke-width="3" fill="none"/>
+    <rect x="310" y="260" width="180" height="60" rx="5" stroke="#C8A951" stroke-width="2" fill="none"/>
+    <circle cx="345" cy="310" r="12" stroke="#C8A951" stroke-width="2" fill="none"/>
+    <circle cx="455" cy="310" r="12" stroke="#C8A951" stroke-width="2" fill="none"/>
+    <line x1="330" y1="220" x2="350" y2="250" stroke="#C8A951" stroke-width="2"/>
+    <line x1="370" y1="220" x2="350" y2="250" stroke="#C8A951" stroke-width="2"/>
+    <line x1="430" y1="220" x2="450" y2="250" stroke="#C8A951" stroke-width="2"/>
+    <line x1="470" y1="220" x2="450" y2="250" stroke="#C8A951" stroke-width="2"/>
+    <path d="M380 210 Q400 190 420 210" stroke="#C8A951" stroke-width="2" fill="none"/>
+  </g>
+  <text x="400" y="380" text-anchor="middle" fill="#555" font-family="Inter, sans-serif" font-size="16">Premium Car</text>
+  <text x="400" y="400" text-anchor="middle" fill="#C8A951" font-family="Playfair Display, serif" font-size="20" font-weight="bold">VIP Luxury Car Rental</text>
+</svg>

@@ -1,11 +1,27 @@
 /* ─── Google Fonts — Must be FIRST ─── */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&family=Lora:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap');
 
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════════
    VIP Luxury Car Rental — "The Showroom" Theme
    ═══════════════════════════════════════════════ */
+
+/* ─── RTL Support — Arabic ─── */
+[dir="rtl"] {
+  --font-family-arabic: 'Noto Naskh Arabic', serif;
+}
+
+[dir="rtl"] .font-sans {
+  font-family: var(--font-family-arabic, 'Noto Naskh Arabic'), serif;
+}
+
+/* Flip margins/paddings for RTL */
+[dir="rtl"] .ml-auto { margin-right: auto; margin-left: 0; }
+[dir="rtl"] .mr-auto { margin-left: auto; margin-right: 0; }
+[dir="rtl"] .space-x-reverse > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
 
 /* ─── Custom Theme Variables ─── */
 @theme inline {
@@ -27,12 +43,38 @@
 
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-sans: 'Inter', system-ui, sans-serif;
+  --font-content: 'Lora', Georgia, serif;
+  
+  --leading-content: 1.8;
+}
+
+/* ─── Fluid Typography — Smooth scaling across ALL screens ─── */
+@layer base {
+  html {
+    font-size: clamp(14px, 0.875rem + 0.25vw, 16px);
+  }
+
+  h1 { font-size: clamp(1.75rem, 1.25rem + 2.5vw, 3.5rem); line-height: 1.1; }
+  h2 { font-size: clamp(1.35rem, 1rem + 1.5vw, 2.25rem); line-height: 1.2; }
+  h3 { font-size: clamp(1.1rem, 0.9rem + 0.8vw, 1.5rem); line-height: 1.3; }
+
+  .section-padding {
+    padding-top: clamp(2rem, 4vw, 5rem);
+    padding-bottom: clamp(2rem, 4vw, 5rem);
+  }
 }
 
 /* ─── Base Styles ─── */
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevent horizontal scroll on ALL devices */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 body {
@@ -46,11 +88,28 @@ body {
   color: white;
 }
 
+/* ─── Responsive Images — Never overflow ─── */
+video, iframe, picture, svg {
+  max-width: 100%;
+  height: auto;
+}
+
 /* ─── Custom Scrollbar ─── */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #0A0A0A; }
 ::-webkit-scrollbar-thumb { background: #2A2A2A; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #C8A951; }
+
+/* ─── Hide number input spinners ─── */
+.input-no-spin::-webkit-outer-spin-button,
+.input-no-spin::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.input-no-spin[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
 
 /* ─── Component Classes ─── */
 @layer components {
@@ -85,7 +144,10 @@ body {
 /* ─── Utility Classes ─── */
 @layer utilities {
   .text-gradient-gold {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-gold via-gold-300 to-gold;
+    background: linear-gradient(135deg, #C8A951 0%, #D4B65A 50%, #C8A951 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .glow-gold {
@@ -93,8 +155,20 @@ body {
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─── Responsive Grid Utility ─── */
+.grid-auto-cars {
+  grid-template-columns: repeat(auto-fill, minmax(clamp(260px, 35vw, 340px), 1fr));
+}
+.grid-auto-brands {
+  grid-template-columns: repeat(auto-fill, minmax(clamp(100px, 15vw, 140px), 1fr));
+}
+
+/* ─── Fix for very small screens (<360px) ─── */
+@media (width < 360px) {
+  html { font-size: 13px; }
+}
+
+/* ─── Fix for large screens (>1920px) ─── */
+@media (width > 1920px) {
+  html { font-size: 18px; }
 }

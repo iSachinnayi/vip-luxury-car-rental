@@ -78,6 +78,5 @@ export interface CarCardData {
   categories: string[] | { name: string; slug?: string }[];
   images: string[];
   thumbnail: string;
+  excerpt?: string;
 }
-
-
