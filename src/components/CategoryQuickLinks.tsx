@@ -13,10 +13,10 @@ interface CategoryQuickLinksProps {
 
 const CATEGORIES = ["Sports", "Luxury", "SUV"] as const;
 
-const CATEGORY_AR: Record<string, string> = {
-  Sports: "رياضية",
-  Luxury: "فاخرة",
-  SUV: "SUV",
+const CATEGORY_LABELS: Record<string, string> = {
+  Sports: "Sports Cars",
+  Luxury: "Luxury Cars",
+  SUV: "SUV Cars",
 };
 
 const ICONS: Record<string, React.ReactNode> = {
@@ -63,7 +63,7 @@ export default async function CategoryQuickLinks({ emirateSlug }: CategoryQuickL
               </div>
               <div className="min-w-0">
                 <div className="text-white font-semibold text-sm sm:text-base group-hover:text-gold transition-colors">
-                  {t("categoryCarType", { type: CATEGORY_AR[cat] || cat })}
+                  {CATEGORY_LABELS[cat] || cat}
                 </div>
                 <div className="text-gray-500 text-xs sm:text-sm">
                   {t("vehiclesAvailable", { count: catCounts[cat] })}
