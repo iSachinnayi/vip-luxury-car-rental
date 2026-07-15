@@ -47,7 +47,7 @@ export async function GET(request: NextRequest) {
       columns: ["URL", "Last Mod."],
       rows: entries.map((e) => ({
         cells: [
-          `<a class="url-link" href="${esc(e.url)}" target="_blank">${esc(e.url)}</a>`,
+          `<a class="url-link" href="${esc(e.url)}">${esc(e.url)}</a>`,
           DATE,
         ],
       })),

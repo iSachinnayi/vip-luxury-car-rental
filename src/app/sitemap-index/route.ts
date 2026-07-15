@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
     const rows = SITEMAPS.map((s) => `
       <tr>
         <td>
-          <a class="sitemap-link" href="${s.url}" target="_blank">${s.name}</a>
+          <a class="sitemap-link" href="${s.url}">${s.name}</a>
           <span class="badge badge-${s.type}">${s.type.charAt(0).toUpperCase() + s.type.slice(1)}</span>
         </td>
         <td class="desc">${s.desc}</td>

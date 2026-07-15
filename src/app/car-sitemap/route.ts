@@ -33,7 +33,7 @@ export async function GET(request: NextRequest) {
       columns: ["URL", "Images", "Last Mod."],
       rows: entries.map((e) => ({
         cells: [
-          `<a class="url-link" href="${esc(e.url)}" target="_blank">${esc(e.url)}</a>`,
+          `<a class="url-link" href="${esc(e.url)}">${esc(e.url)}</a>`,
           e.imgs.length > 0 ? `<span class="badge badge-imgs">${e.imgs.length} image${e.imgs.length > 1 ? "s" : ""}</span>` : "—",
           DATE,
         ],
