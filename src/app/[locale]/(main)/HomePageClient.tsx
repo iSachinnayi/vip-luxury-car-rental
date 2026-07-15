@@ -207,13 +207,14 @@ export default function HomePage() {
             </motion.div>
           </div>
 
-          {/* Mobile video */}
+          {/* Mobile video — only rendered when hero is visible */}
           {heroVisible && (
             <video ref={mobileVideoRef} autoPlay muted={true} loop playsInline preload="none"
               className="md:hidden absolute inset-0 w-full h-full object-cover"
               poster="/api/images/2024/04/Urus-Black-With-Green-1.webp"
-            src={BUNNY_MOBILE_MP4}
-          />
+              src={BUNNY_MOBILE_MP4}
+            />
+          )}
 
           {/* Dark overlay layers — extra dark for cinematic depth */}
           <div className="absolute inset-0 bg-gradient-to-r from-dark/95 via-dark/75 to-dark/90" />
