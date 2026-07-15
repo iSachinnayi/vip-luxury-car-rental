@@ -28,6 +28,8 @@ export const metadata: Metadata = {
     languages: {
       en: `${BASE_URL}/`,
       ar: `${BASE_URL}/ar/`,
+    },
+  },
       "x-default": `${BASE_URL}/`,
     },
   },
@@ -71,14 +73,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="h-full antialiased">
-      <body className={`min-h-full flex flex-col bg-dark text-white font-sans ${arabicFont.variable}`}>
+    <html lang="en" className={`${arabicFont.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Preload hero poster image for LCP optimization */}
+        <link rel="preload" href="/api/images/2024/04/Urus-Black-With-Green-1.webp" as="image" fetchPriority="high" />
+      </head>
+      <body className="bg-dark text-white antialiased min-h-screen flex flex-col">
         {children}
       </body>
     </html>

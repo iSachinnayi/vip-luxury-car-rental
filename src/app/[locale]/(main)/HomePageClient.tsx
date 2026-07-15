@@ -50,16 +50,33 @@ export default function HomePage() {
 
   const desktopVideoRef = useRef<HTMLVideoElement>(null);
   const mobileVideoRef = useRef<HTMLVideoElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const [heroVisible, setHeroVisible] = useState(false);
 
-  // ─── Video Initialization ──────────────────────
+  // ─── Lazy Load Hero Video (improves LCP) ──────
   useEffect(() => {
+    const el = heroRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setHeroVisible(true);
+        obs.disconnect();
+      }
+    }, { threshold: 0.1 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  // ─── Video Playback ───────────────────────────
+  useEffect(() => {
+    if (!heroVisible) return;
     [desktopVideoRef, mobileVideoRef].forEach((ref) => {
       const video = ref.current;
       if (!video) return;
       video.muted = true;
       video.play().catch(() => {});
     });
-  }, []);
+  }, [heroVisible]);
 
   // Deterministic particle positions to avoid hydration mismatch
   const particles = useMemo(() => [
@@ -174,7 +191,7 @@ export default function HomePage() {
       {/*  HERO — Cinematic Video Background        */}
       {/*  Full-viewport video with luxury overlay   */}
       {/* ════════════════════════════════════════════ */}
-      <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden">
+      <section ref={heroRef} className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden">
         {/* ── Video Background ── */}
         <div className="absolute inset-0">
           {/* Desktop video with slow Ken Burns zoom */}
@@ -182,7 +199,7 @@ export default function HomePage() {
             <motion.div className="absolute inset-0 w-full h-full"
               animate={{ scale: [1, 1.05] }}
               transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}>
-              <video ref={desktopVideoRef} autoPlay muted={true} loop playsInline preload="metadata"
+              <video ref={desktopVideoRef} autoPlay muted={true} loop playsInline preload="none"
                 className="w-full h-full object-cover"
                 poster="/api/images/2024/04/Urus-Black-With-Green-1.webp"
                 src={BUNNY_DESKTOP_MP4}
@@ -191,9 +208,10 @@ export default function HomePage() {
           </div>
 
           {/* Mobile video */}
-          <video ref={mobileVideoRef} autoPlay muted={true} loop playsInline preload="metadata"
-            className="md:hidden absolute inset-0 w-full h-full object-cover"
-            poster="/api/images/2024/04/Urus-Black-With-Green-1.webp"
+          {heroVisible && (
+            <video ref={mobileVideoRef} autoPlay muted={true} loop playsInline preload="none"
+              className="md:hidden absolute inset-0 w-full h-full object-cover"
+              poster="/api/images/2024/04/Urus-Black-With-Green-1.webp"
             src={BUNNY_MOBILE_MP4}
           />
 
