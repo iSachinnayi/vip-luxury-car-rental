@@ -1,19 +1,113 @@
-// Sitemap Index — like RankMath's sitemap_index.xml
-// Lists all sub-sitemaps with last modified dates
-import { NextResponse } from "next/server";
+// Sitemap Index — Returns HTML for browsers, XML for search engines
+import { NextRequest, NextResponse } from "next/server";
 
 const BASE = "https://vipluxurycarrental.com";
+const SITEMAPS = [
+  { name: "Car Sitemap", url: `${BASE}/car-sitemap/`, desc: "109 luxury car detail pages with images", type: "car" },
+  { name: "Page Sitemap", url: `${BASE}/page-sitemap/`, desc: "Core pages — Home, About, Contact, FAQ, Brands, All Cars", type: "page" },
+  { name: "Location Sitemap", url: `${BASE}/location-sitemap/`, desc: "Service locations across UAE — Abu Dhabi, Sharjah, RAK", type: "location" },
+  { name: "Brand Sitemap", url: `${BASE}/brand-sitemap/`, desc: "Brand landing + car category pages", type: "brand" },
+];
 
-function xmlEscape(s: string) { return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+export async function GET(request: NextRequest) {
+  const accept = request.headers.get("accept") || "";
 
-export async function GET() {
-  const date = "2026-07-08";
+  // ── Browser: return beautiful HTML ──
+  if (accept.includes("text/html")) {
+    const rows = SITEMAPS.map((s) => `
+      <tr>
+        <td>
+          <a class="sitemap-link" href="${s.url}" target="_blank">${s.name}</a>
+          <span class="badge badge-${s.type}">${s.type.charAt(0).toUpperCase() + s.type.slice(1)}</span>
+        </td>
+        <td class="desc">${s.desc}</td>
+        <td>2026-07-08</td>
+      </tr>`).join("");
+
+    const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>XML Sitemap | VIP Luxury Car Rental Dubai</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0A0A0A; color: #E5E5E5; padding: 40px 20px;
+    }
+    .container { max-width: 900px; margin: 0 auto; }
+    .header {
+      background: linear-gradient(135deg, #C8A951, #A8872F);
+      color: #0A0A0A; padding: 30px 40px; border-radius: 12px 12px 0 0;
+    }
+    .header h1 { font-size: 24px; font-weight: 700; margin-bottom: 6px; }
+    .header p { font-size: 14px; opacity: 0.85; }
+    .card { background: #151515; border: 1px solid #2A2A2A; border-top: none; padding: 20px 40px 30px; border-radius: 0 0 12px 12px; }
+    .info { color: #999; font-size: 13px; padding: 15px 0 20px; }
+    .info a { color: #C8A951; }
+    table { width: 100%; border-collapse: collapse; }
+    th { text-align: left; padding: 14px 16px; font-size: 12px; font-weight: 600; color: #C8A951; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 2px solid #2A2A2A; }
+    td { padding: 14px 16px; font-size: 14px; border-bottom: 1px solid #222; vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(200, 169, 81, 0.05); }
+    .sitemap-link { color: #C8A951; text-decoration: none; font-weight: 600; font-size: 15px; }
+    .sitemap-link:hover { text-decoration: underline; }
+    .desc { color: #999; font-size: 13px; }
+    .badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 10px; font-weight: 600; margin-left: 10px; vertical-align: middle; }
+    .badge-car { background: rgba(200, 169, 81, 0.15); color: #C8A951; }
+    .badge-page { background: rgba(123, 183, 255, 0.15); color: #7CB7FF; }
+    .badge-location { background: rgba(107, 189, 107, 0.15); color: #6BBD6B; }
+    .badge-brand { background: rgba(200, 120, 200, 0.15); color: #C878C8; }
+    .footer { text-align: center; padding: 30px; color: #666; font-size: 13px; }
+    .footer a { color: #C8A951; text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+    .note { background: #1A1A1A; border: 1px solid #2A2A2A; border-radius: 8px; padding: 16px 20px; margin-top: 20px; font-size: 13px; color: #999; }
+    .note strong { color: #E5E5E5; }
+    .note a { color: #C8A951; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>XML Sitemap</h1>
+      <p>This XML Sitemap helps search engines like Google crawl and index the content on VIP Luxury Car Rental Dubai efficiently.</p>
+    </div>
+    <div class="card">
+      <p class="info">This <strong>XML Sitemap Index</strong> contains <strong>${SITEMAPS.length}</strong> sitemaps.</p>
+      <table>
+        <tr><th>Sitemap</th><th>Description</th><th>Last Modified</th></tr>
+        ${rows}
+      </table>
+
+      <div class="note">
+        <strong>📖 About this sitemap:</strong> This is a XML Sitemap that search engines use to discover and index pages on our website.
+        Each sub-sitemap above contains URLs organized by content type. For a human-readable version,
+        <a href="${BASE}/sitemap/">visit our HTML Sitemap</a>.
+      </div>
+    </div>
+    <div class="footer">
+      Generated by VIP Luxury Car Rental Dubai |
+      <a href="${BASE}/">Home</a> |
+      <a href="${BASE}/sitemap/">HTML Sitemap</a>
+    </div>
+  </div>
+</body>
+</html>`;
+
+    return new NextResponse(html, {
+      status: 200,
+      headers: { "Content-Type": "text/html; charset=utf-8" },
+    });
+  }
+
+  // ── Search engine / crawler: return XML ──
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <sitemap><loc>${BASE}/car-sitemap</loc><lastmod>${date}</lastmod></sitemap>
-  <sitemap><loc>${BASE}/page-sitemap</loc><lastmod>${date}</lastmod></sitemap>
-  <sitemap><loc>${BASE}/location-sitemap</loc><lastmod>${date}</lastmod></sitemap>
-  <sitemap><loc>${BASE}/brand-sitemap</loc><lastmod>${date}</lastmod></sitemap>
+  <sitemap><loc>${BASE}/car-sitemap</loc><lastmod>2026-07-08</lastmod></sitemap>
+  <sitemap><loc>${BASE}/page-sitemap</loc><lastmod>2026-07-08</lastmod></sitemap>
+  <sitemap><loc>${BASE}/location-sitemap</loc><lastmod>2026-07-08</lastmod></sitemap>
+  <sitemap><loc>${BASE}/brand-sitemap</loc><lastmod>2026-07-08</lastmod></sitemap>
 </sitemapindex>`;
 
   return new NextResponse(xml, {
