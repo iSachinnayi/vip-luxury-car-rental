@@ -24,13 +24,12 @@ export default function Footer() {
   ];
 
   const QUICK_LINKS = [
-    { label: t("quickLinks"), href: "/" },
     { label: t("allCars"), href: "/all-cars" },
     { label: t("brands"), href: "/brand" },
     { label: t("luxuryCars"), href: "/luxury-car-rental-in-dubai" },
     { label: t("sportsCars"), href: "/sports-car-rental-in-dubai" },
     { label: t("suvRental"), href: "/suv-car-rental-in-dubai" },
-    { label: t("contactUs"), href: "/about" },
+    { label: "Site Map", href: "/sitemap" },
     { label: t("contact"), href: "/contact" },
   ];
 
