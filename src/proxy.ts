@@ -13,6 +13,6 @@ export const config = {
   // Match all pathnames except static files, API, and admin
   // Excludes: api/, admin/, _next/, static assets, and files with extensions
   matcher: [
-    "/((?!api|admin|_next|brand-logos|data|images|favicon\\.ico|favicon\\.svg|robots\\.txt|sitemap\\.xml|sitemap-index|car-sitemap|page-sitemap|location-sitemap|brand-sitemap).*)"
+    "/((?!api|admin|_next|brand-logos|data|images|sitemap-stylesheet|favicon\\.ico|favicon\\.svg|robots\\.txt|sitemap-index|car-sitemap|page-sitemap|location-sitemap|brand-sitemap).*)"
   ],
 };

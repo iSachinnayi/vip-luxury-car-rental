@@ -4,7 +4,6 @@ import { getAllBrands, getAllTypes } from "@/lib/cars";
 import { getEmirateSlugs } from "@/lib/emirates";
 
 const BASE = "https://vipluxurycarrental.com";
-const XSL = `${BASE}/sitemap-stylesheet.xsl`;
 const DATE = "2026-07-08";
 
 function esc(s: string) { return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
@@ -66,7 +65,6 @@ export async function GET() {
   }
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="${esc(XSL)}"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${urls}</urlset>`;
