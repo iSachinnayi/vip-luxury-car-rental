@@ -80,8 +80,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   addRoute("/about/", monthly, "monthly", 0.5);
   addRoute("/contact/", monthly, "monthly", 0.5);
   addRoute("/faq/", monthly, "monthly", 0.4);
-  addRoute("/privacy/", monthly, "yearly", 0.2);
-  addRoute("/terms/", monthly, "yearly", 0.2);
+  // Privacy & Terms — noindex'd legal pages, excluded from sitemap
 
   // ── 2. Car detail pages ──
   const cars = getAllCars();

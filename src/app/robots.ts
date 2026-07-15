@@ -24,6 +24,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: [
           "/api/",      // API endpoints — no SEO value
           "/booking/",  // Booking/checkout — transactional, not content
+          "/admin/",    // Admin panel — internal tool, not for search
         ],
         // Polite crawl delay — be nice to servers
         crawlDelay: 1,
