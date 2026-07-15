@@ -11,6 +11,8 @@ import LocaleScript from "./LocaleScript";
 import enMessages from "../../../messages/en.json";
 import arMessages from "../../../messages/ar.json";
 
+export const dynamic = "force-dynamic";
+
 const ALL_MESSAGES: Record<string, Record<string, unknown>> = {
   en: enMessages as Record<string, unknown>,
   ar: arMessages as Record<string, unknown>,

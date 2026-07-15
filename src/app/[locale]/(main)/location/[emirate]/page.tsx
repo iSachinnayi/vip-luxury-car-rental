@@ -17,6 +17,8 @@ import EmirateCarGrid from "@/components/EmirateCarGrid";
 import CategoryQuickLinks from "@/components/CategoryQuickLinks";
 import LocationSwitcher from "@/components/LocationSwitcher";
 
+export const dynamic = "force-dynamic";
+
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://vipluxurycarrental.com";
 
 export function generateStaticParams() {
