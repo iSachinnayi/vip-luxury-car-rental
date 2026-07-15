@@ -10,7 +10,7 @@ import { getAllCars, getAllBrands, getAllTypes } from "@/lib/cars";
 import { getEmirateSlugs } from "@/lib/emirates";
 
 export const metadata: Metadata = {
-  title: "Sitemap | VIP Luxury Car Rental Dubai",
+  title: "Site Map",
   description: "Complete site map of VIP Luxury Car Rental Dubai. Browse all car rental options, locations, and services.",
   robots: { index: false, follow: true },
 };
