@@ -31,6 +31,6 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     // Point to the comprehensive sitemap with all 200+ URLs
-    sitemap: `${BASE_URL}/sitemap.xml`,
+    sitemap: `${BASE_URL}/sitemap-index`,
   };
 }
