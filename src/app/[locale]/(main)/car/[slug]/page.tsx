@@ -11,6 +11,8 @@ import { generateCarMetaAr } from "@/lib/seo-ar";
 import { carSchema, breadcrumbSchema } from "@/lib/schema";
 import CarDetailClient from "./CarDetailClient";
 
+export const dynamic = "force-dynamic";
+
 export async function generateStaticParams() {
   return getAllCars().map((car) => ({ slug: car.slug }));
 }
