@@ -4,10 +4,14 @@
 // ═══════════════════════════════════════════════
 
 import { ImageResponse } from "next/og";
-import { getCarBySlug } from "@/lib/cars";
+import { getCarBySlug, getAllCars } from "@/lib/cars";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+export async function generateStaticParams() {
+  return getAllCars().map((car) => ({ slug: car.slug }));
+}
 
 interface Props {
   params: Promise<{ slug: string }>;

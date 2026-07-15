@@ -66,9 +66,9 @@ export function getAllTypes(): string[] {
 
 // ─── ENHANCE WITH DEAL PSYCHOLOGY ──────────────
 function enhanceCarWithDealPsychology(car: CarData): CarCardData {
-  const dayPrice = parseInt(car.pricing.per_day || "0");
-  const weekPrice = parseInt(car.pricing.per_week || "0");
-  const monthPrice = parseInt(car.pricing.per_month || "0");
+  const dayPrice = parseInt(car.pricing?.per_day || "0");
+  const weekPrice = parseInt(car.pricing?.per_week || "0");
+  const monthPrice = parseInt(car.pricing?.per_month || "0");
 
   // Load real images from the image map
   const carImages = getCarImages(car.id);
@@ -89,23 +89,23 @@ function enhanceCarWithDealPsychology(car: CarData): CarCardData {
       discount_week: DISCOUNT_CONFIG.week.label,
       discount_month: DISCOUNT_CONFIG.month.label,
     },
-    specs: car.specs,
+    specs: car.specs || {},
     km_limits: {
-      per_day: car.km_limits.per_day,
-      per_week: car.km_limits.per_week,
-      per_month: car.km_limits.per_month,
-      extra_km: car.km_limits.extra_km,
-      original_per_day: car.km_limits.per_day ? String(Math.round(parseInt(car.km_limits.per_day) / DISCOUNT_CONFIG.km_upgrade)) : undefined,
-      original_per_week: car.km_limits.per_week ? String(Math.round(parseInt(car.km_limits.per_week) / DISCOUNT_CONFIG.km_upgrade)) : undefined,
-      original_per_month: car.km_limits.per_month ? String(Math.round(parseInt(car.km_limits.per_month) / DISCOUNT_CONFIG.km_upgrade)) : undefined,
+      per_day: car.km_limits?.per_day || "",
+      per_week: car.km_limits?.per_week || "",
+      per_month: car.km_limits?.per_month || "",
+      extra_km: car.km_limits?.extra_km || "",
+      original_per_day: car.km_limits?.per_day ? String(Math.round(parseInt(car.km_limits.per_day) / DISCOUNT_CONFIG.km_upgrade)) : undefined,
+      original_per_week: car.km_limits?.per_week ? String(Math.round(parseInt(car.km_limits.per_week) / DISCOUNT_CONFIG.km_upgrade)) : undefined,
+      original_per_month: car.km_limits?.per_month ? String(Math.round(parseInt(car.km_limits.per_month) / DISCOUNT_CONFIG.km_upgrade)) : undefined,
     },
     deposit: {
-      no_deposit_fee: car.deposit.no_deposit_fee,
-      security: car.deposit.security_deposit || car.deposit.security || "5000",
+      no_deposit_fee: car.deposit?.no_deposit_fee || "",
+      security: car.deposit?.security_deposit || car.deposit?.security || "5000",
     },
-    brand: car.brand,
-    car_type: car.car_type,
-    categories: car.categories,
+    brand: car.brand || "",
+    car_type: car.car_type || "",
+    categories: car.categories || [],
     images: carImages.gallery,
     thumbnail: carImages.thumbnail || car.images?.[0] || "",
     excerpt: car.excerpt || "",
