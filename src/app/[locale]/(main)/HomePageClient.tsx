@@ -290,7 +290,11 @@ export default function HomePage() {
 
             {/* ── 2. Heading with word animation ── */}
             <motion.div variants={stagger.item}>
-              <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1]">
+              {/* Visually hidden H1 for SEO — keyword focused, proper case */}
+              <h1 className="sr-only">{t("heroSeoH1")}</h1>
+
+              {/* Visible heading (div, not H1 — visual unchanged) */}
+              <div className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1]">
                 {/* Hero title words with stagger animation */}
                 <span className="inline-flex flex-wrap justify-center gap-x-4">
                   {t("heroTitle").split(" ").map((word, wi) => (
@@ -313,7 +317,7 @@ export default function HomePage() {
                 >
                   {t("heroSubtitle")}
                 </motion.span>
-              </h1>
+              </div>
 
               {/* Animated gold divider line */}
               <motion.div
