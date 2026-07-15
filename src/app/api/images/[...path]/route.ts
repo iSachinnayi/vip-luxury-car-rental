@@ -8,16 +8,9 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "fs/promises";
 import path from "path";
 import sharp from "sharp";
+import { getUploadsDir } from "@/lib/image-path";
 
-const UPLOADS_DIR = path.join(
-  "/",
-  "var",
-  "www",
-  "vipluxurycarrental.com",
-  "htdocs",
-  "wp-content",
-  "uploads"
-);
+const UPLOADS_DIR = getUploadsDir();
 
 const CACHE_HEADERS = { "Cache-Control": "public, max-age=31536000, immutable" };
 

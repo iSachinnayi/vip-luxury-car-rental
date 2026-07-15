@@ -5,13 +5,11 @@
 
 import fs from "fs";
 import path from "path";
+import { getUploadsDir, getStructuredDataDir } from "./image-path";
 
-const UPLOADS_DIR = path.join(
-  process.cwd(), "..", "server_data", "images_full",
-  "var", "www", "vipluxurycarrental.com", "htdocs", "wp-content", "uploads"
-);
-const MAP_PATH = path.join(process.cwd(), "..", "server_data", "structured_data", "car_image_map.json");
-const INDEX_PATH = path.join(process.cwd(), "..", "server_data", "structured_data", "available_images_index.json");
+const UPLOADS_DIR = getUploadsDir();
+const MAP_PATH = path.join(getStructuredDataDir(), "car_image_map.json");
+const INDEX_PATH = path.join(getStructuredDataDir(), "available_images_index.json");
 
 interface CarImageInfo { title: string; slug: string; thumbnail_url: string; gallery_urls: string[]; }
 
