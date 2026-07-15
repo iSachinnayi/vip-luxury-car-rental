@@ -1,11 +1,7 @@
 // ═══════════════════════════════════════════════
-//  Sitemap — Multi-sitemap with index (like RankMath)
-//  Split by content type for clean organization:
-//    0.xml → Core pages (home, all-cars, static)
-//    1.xml → Car detail pages (109, with images)
-//    2.xml → Location pages (emirates + sub-pages)
-//    3.xml → Brand landing + category pages
-//  Access: /sitemap.xml (index) → /sitemap/0.xml etc.
+//  Sitemap — Single clean sitemap.xml
+//  Organized by content type with clear structure
+//  Car pages include image tags for Google Images
 // ═══════════════════════════════════════════════
 
 import type { MetadataRoute } from "next";
@@ -50,7 +46,7 @@ function languages(path: string) {
   return { en, ar, "x-default": en };
 }
 
-function pageEntry(
+function entry(
   path: string,
   priority: number,
   freq: string,
@@ -66,89 +62,59 @@ function pageEntry(
   };
 }
 
-// ── Sitemap IDs: 0=core, 1=cars, 2=locations, 3=brands+categories ──
-export async function generateSitemaps() {
-  return [{ id: "0" }, { id: "1" }, { id: "2" }, { id: "3" }];
-}
-
-export default async function sitemap({
-  id,
-}: {
-  id: Promise<string>;
-}): Promise<MetadataRoute.Sitemap> {
-  const resolvedId = await id;
+export default function sitemap(): MetadataRoute.Sitemap {
+  const cars = getAllCars();
   const allBrands = getAllBrands();
   const allTypes = getAllTypes().filter(Boolean) as string[];
   const emirates = getEmirateSlugs();
 
-  // ── Sitemap 0: Core Pages ──
-  if (resolvedId === "0") {
-    return [
-      pageEntry("/", 1.0, WEEKLY),
-      pageEntry("/all-cars/", 0.9, "daily"),
-      pageEntry("/brand/", 0.6, WEEKLY),
-      pageEntry("/about/", 0.5, MONTHLY),
-      pageEntry("/contact/", 0.5, MONTHLY),
-      pageEntry("/faq/", 0.5, MONTHLY),
-    ];
-  }
+  return [
+    // ═══ CORE PAGES ═══ (priority 1.0 - 0.9)
+    entry("/", 1.0, WEEKLY),
+    entry("/all-cars/", 0.9, "daily"),
 
-  // ── Sitemap 1: Car Detail Pages (with images) ──
-  if (resolvedId === "1") {
-    const cars = getAllCars();
-    return cars
-      .filter((c) => c.slug)
-      .map((car) => {
-        const carImages = getCarImages(car.id);
-        const imgUrls: string[] = [];
-        if (carImages.thumbnail) imgUrls.push(`${BASE_URL}${carImages.thumbnail}`);
-        for (const g of carImages.gallery) {
-          const full = `${BASE_URL}${g}`;
-          if (g && !imgUrls.includes(full)) imgUrls.push(full);
-        }
-        return pageEntry(`/car/${car.slug}/`, 0.8, WEEKLY, imgUrls.slice(0, 10));
-      });
-  }
-
-  // ── Sitemap 2: Location Pages ──
-  if (resolvedId === "2") {
-    const entries: MetadataRoute.Sitemap = [];
-
-    // Emirate main pages
-    for (const emirate of emirates) {
-      entries.push(pageEntry(`/location/${emirate}/`, 0.8, WEEKLY));
-    }
-
-    // Brand + category sub-pages per emirate
-    for (const emirate of emirates) {
-      for (const brand of allBrands) {
-        const slug = `rent-${brand.toLowerCase().replace(/\s+/g, "-")}`;
-        entries.push(pageEntry(`/location/${emirate}/${slug}/`, 0.5, WEEKLY));
+    // ═══ CAR PAGES ═══ (priority 0.8, with images)
+    ...cars.filter((c) => c.slug).map((car) => {
+      const ci = getCarImages(car.id);
+      const urls: string[] = [];
+      if (ci.thumbnail) urls.push(`${BASE_URL}${ci.thumbnail}`);
+      for (const g of ci.gallery) {
+        const f = `${BASE_URL}${g}`;
+        if (g && !urls.includes(f)) urls.push(f);
       }
-      for (const type of allTypes) {
-        const slug = `${type.toLowerCase()}-car-rental`;
-        entries.push(pageEntry(`/location/${emirate}/${slug}/`, 0.5, WEEKLY));
-      }
-    }
+      return entry(`/car/${car.slug}/`, 0.8, WEEKLY, urls.slice(0, 10));
+    }),
 
-    return entries;
-  }
+    // ═══ EMIRATES ═══ (priority 0.8)
+    ...emirates.map((e) => entry(`/location/${e}/`, 0.8, WEEKLY)),
 
-  // ── Sitemap 3: Brand Landing + Category Pages ──
-  if (resolvedId === "3") {
-    const entries: MetadataRoute.Sitemap = [];
+    // ═══ BRAND LANDING PAGES ═══ (priority 0.7)
+    ...allBrands
+      .map((b) => BRAND_SLUG_MAP[b])
+      .filter(Boolean)
+      .map((slug) => entry(`/${slug}/`, 0.7, WEEKLY)),
 
-    for (const brand of allBrands) {
-      const slug = BRAND_SLUG_MAP[brand];
-      if (slug) entries.push(pageEntry(`/${slug}/`, 0.7, WEEKLY));
-    }
-    for (const type of allTypes) {
-      const slug = TYPE_SLUG_MAP[type];
-      if (slug) entries.push(pageEntry(`/${slug}/`, 0.7, WEEKLY));
-    }
+    // ═══ CATEGORY PAGES ═══ (priority 0.7)
+    ...allTypes
+      .map((t) => TYPE_SLUG_MAP[t])
+      .filter(Boolean)
+      .map((slug) => entry(`/${slug}/`, 0.7, WEEKLY)),
 
-    return entries;
-  }
+    // ═══ BRAND PAGE + STATIC ═══ (priority 0.6 - 0.5)
+    entry("/brand/", 0.6, WEEKLY),
+    ...["about", "contact", "faq"].map((p) => entry(`/${p}/`, 0.5, MONTHLY)),
 
-  return [];
+    // ═══ LOCATION SUB-PAGES ═══ (priority 0.5)
+    ...emirates.flatMap((emirate) => [
+      ...allBrands.map((brand) =>
+        entry(
+          `/location/${emirate}/rent-${brand.toLowerCase().replace(/\s+/g, "-")}/`,
+          0.5, WEEKLY
+        )
+      ),
+      ...allTypes.map((type) =>
+        entry(`/location/${emirate}/${type.toLowerCase()}-car-rental/`, 0.5, WEEKLY)
+      ),
+    ]),
+  ];
 }
