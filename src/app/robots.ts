@@ -1,12 +1,16 @@
 // ═══════════════════════════════════════════════
 //  Robots.txt — Modern, AI-Supportive
+//  Complies with Google guidelines + AI crawler best practices
+//
 //  Strategy:
 //    ✅ INDEX: All public pages (home, cars, brands,
-//       categories, contact, privacy, terms)
-//    🚫 NO INDEX: API routes, booking/checkout pages
-//    🤖 AI bots: Explicitly allowed (AI search,
-//       training, and indexing)
+//       locations, categories, about, faq, contact)
+//    🚫 NO INDEX: API routes, booking/checkout, admin
+//    🤖 AI crawlers: Allowed (AI search visibility)
 //    🗺️ Sitemap: Linked for complete coverage
+//
+//  Note: Crawl-delay is NOT used for Googlebot
+//  (Google ignores it). Only applied to generic * rules.
 // ═══════════════════════════════════════════════
 
 import type { MetadataRoute } from "next";
@@ -16,21 +20,41 @@ const BASE_URL = "https://vipluxurycarrental.com";
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
+      // ── Googlebot: no crawl-delay (not supported) ──
       {
-        // ── All bots: search engines, AI crawlers, aggregators ──
-        // Allow full site access except API and booking pages
+        userAgent: "Googlebot",
+        allow: "/",
+        disallow: ["/api/", "/booking/", "/admin/"],
+      },
+      // ── Googlebot-Image: allow all images ──
+      {
+        userAgent: "Googlebot-Image",
+        allow: "/api/images/",
+      },
+      // ── AI / search crawlers (explicitly allowed for visibility) ──
+      {
+        userAgent: "GPTBot",
+        allow: "/",
+        disallow: ["/api/", "/booking/", "/admin/"],
+      },
+      {
+        userAgent: "Claude-Web",
+        allow: "/",
+        disallow: ["/api/", "/booking/", "/admin/"],
+      },
+      {
+        userAgent: "PerplexityBot",
+        allow: "/",
+        disallow: ["/api/", "/booking/", "/admin/"],
+      },
+      // ── All other bots (Bing, Yandex, etc.) ──
+      {
         userAgent: "*",
         allow: "/",
-        disallow: [
-          "/api/",      // API endpoints — no SEO value
-          "/booking/",  // Booking/checkout — transactional, not content
-          "/admin/",    // Admin panel — internal tool, not for search
-        ],
-        // Polite crawl delay — be nice to servers
+        disallow: ["/api/", "/booking/", "/admin/"],
         crawlDelay: 1,
       },
     ],
-    // Point to the comprehensive sitemap with all 200+ URLs
-    sitemap: `${BASE_URL}/sitemap-index`,
+    sitemap: `${BASE_URL}/sitemap-index/`,
   };
 }
