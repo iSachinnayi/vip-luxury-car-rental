@@ -22,7 +22,15 @@ echo "  → $SYMLINK_CHECK"
 # 2. Copy all public assets to standalone/public/
 #    Required because standalone build doesn't include public/ files
 echo "[2/7] Copying public assets..."
-cp -f "$PUBLIC"/favicon.* "$STANDALONE/public/" 2>/dev/null && echo "  → favicons copied" || echo "  → no favicons found"
+
+# Favicon (explicit file copy, not glob — more reliable)
+mkdir -p "$STANDALONE/public/"
+for f in "$PUBLIC"/favicon.*; do
+  if [ -f "$f" ]; then
+    cp -f "$f" "$STANDALONE/public/" && echo "  → copied $(basename $f)"
+  fi
+done
+
 cp -rf "$PUBLIC"/brand-logos "$STANDALONE/public/" 2>/dev/null && echo "  → brand-logos copied" || echo "  → no brand-logos"
 cp -rf "$PUBLIC"/images "$STANDALONE/public/" 2>/dev/null && echo "  → images copied" || echo "  → no images dir"
 cp -rf "$PUBLIC"/data "$STANDALONE/public/" 2>/dev/null && echo "  → data copied" || echo "  → no data dir"
