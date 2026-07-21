@@ -24,7 +24,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "Googlebot",
         allow: "/",
-        disallow: ["/api/", "/booking/", "/admin/"],
+        disallow: ["/api/", "/booking/", "/admin/", "/_next/static/"],
       },
       // ── Googlebot-Image: allow all images ──
       {
@@ -35,23 +35,23 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "GPTBot",
         allow: "/",
-        disallow: ["/api/", "/booking/", "/admin/"],
+        disallow: ["/api/", "/booking/", "/admin/", "/_next/static/"],
       },
       {
         userAgent: "Claude-Web",
         allow: "/",
-        disallow: ["/api/", "/booking/", "/admin/"],
+        disallow: ["/api/", "/booking/", "/admin/", "/_next/static/"],
       },
       {
         userAgent: "PerplexityBot",
         allow: "/",
-        disallow: ["/api/", "/booking/", "/admin/"],
+        disallow: ["/api/", "/booking/", "/admin/", "/_next/static/"],
       },
       // ── All other bots (Bing, Yandex, etc.) ──
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/booking/", "/admin/"],
+        disallow: ["/api/", "/booking/", "/admin/", "/_next/static/"],
         crawlDelay: 1,
       },
     ],
