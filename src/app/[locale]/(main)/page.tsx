@@ -15,8 +15,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: isAr
-      ? "أفضل سيارات فاخرة للإيجار في دبي"
-      : "Premium Luxury Car Rental Dubai",
+      ? "أفضل السيارات الفاخرة والرياضية"
+      : "Premium Sports & Exotic Car Fleet",
     description: isAr
       ? "احجز أفضل السيارات الفاخرة والرياضية في دبي. أسعار تنافسية، توصيل مجاني في جميع أنحاء الإمارات، وفريق دعم على مدار الساعة."
       : "Book the finest luxury, sports, and exotic cars in Dubai. Competitive rates, free delivery across the UAE, and 24/7 support team.",
@@ -29,9 +29,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: isAr ? "أفضل سيارات فاخرة للإيجار في دبي" : "Premium Luxury Car Rental Dubai",
+      title: isAr ? "أفضل السيارات الفاخرة والرياضية" : "Premium Sports & Exotic Car Fleet",
       description: isAr
-        ? "احسب أفضل السيارات الفاخرة والرياضية في دبي."
+        ? "احجز أفضل السيارات الفاخرة والرياضية في دبي."
         : "Book the finest luxury, sports, and exotic cars in Dubai.",
       url: `https://vipluxurycarrental.com/${locale === "en" ? "" : "ar/"}`,
       siteName: "VIP Luxury Car Rental Dubai",

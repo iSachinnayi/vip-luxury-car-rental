@@ -74,6 +74,69 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/* Preload hero poster image for LCP optimization */}
         <link rel="preload" href="/api/images/2024/04/Urus-Black-With-Green-1.webp" as="image" fetchPriority="high" />
+
+        {/* ── JSON-LD Structured Data ── */}
+        {/* WebSite schema — tells Google the official site name */}
+        <script
+          id="schema-website"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "VIP Luxury Car Rental Dubai",
+              url: "https://vipluxurycarrental.com/",
+              potentialAction: {
+                "@type": "SearchAction",
+                target: {
+                  "@type": "EntryPoint",
+                  urlTemplate: "https://vipluxurycarrental.com/all-cars/?q={search_term_string}",
+                },
+                "query-input": "required name=search_term_string",
+              },
+            }),
+          }}
+        />
+        {/* Organization + AutoRental schema — business info for rich results */}
+        <script
+          id="schema-organization"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": ["Organization", "AutoRental"],
+              name: "VIP Luxury Car Rental Dubai",
+              url: "https://vipluxurycarrental.com/",
+              logo: "https://vipluxurycarrental.com/images/vip-logo.webp",
+              description: "Premium luxury car rental service in Dubai. Rent sports cars, luxury SUVs, and exotic vehicles with free doorstep delivery.",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Al Barsha, Near Mall of Emirates",
+                addressLocality: "Dubai",
+                addressCountry: "AE",
+              },
+              telephone: "+971501564849",
+              email: "booking@vipluxurycarrental.com",
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: "4.9",
+                bestRating: "5",
+                ratingCount: "200",
+                reviewCount: "200",
+              },
+              priceRange: "$$$",
+              areaServed: "Dubai, UAE",
+              openingHours: "Mo-Su 00:00-23:59",
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: "+971501564849",
+                contactType: "customer service",
+                availableLanguage: ["English", "Arabic"],
+              },
+              sameAs: ["https://wa.me/971501564849"],
+            }),
+          }}
+        />
       </head>
       <body className="bg-dark text-white antialiased min-h-screen flex flex-col">
         {children}
