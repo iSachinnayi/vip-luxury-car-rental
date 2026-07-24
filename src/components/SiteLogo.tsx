@@ -28,7 +28,7 @@ export default function SiteLogo({
     <div className={`relative flex-shrink-0 overflow-hidden ${className}`}
       style={{ width: imgW, height: imgH }}>
       <Image
-        src="/images/vip-logo.webp"
+        src="/images/vip-logo.png"
         alt="VIP Luxury Car Rental Dubai"
         fill
         className="object-cover"

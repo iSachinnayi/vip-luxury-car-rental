@@ -107,7 +107,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "@type": ["Organization", "AutoRental"],
               name: "VIP Luxury Car Rental Dubai",
               url: "https://vipluxurycarrental.com/",
-              logo: "https://vipluxurycarrental.com/images/vip-logo.webp",
+              logo: "https://vipluxurycarrental.com/images/vip-logo.png",
               description: "Premium luxury car rental service in Dubai. Rent sports cars, luxury SUVs, and exotic vehicles with free doorstep delivery.",
               address: {
                 "@type": "PostalAddress",
