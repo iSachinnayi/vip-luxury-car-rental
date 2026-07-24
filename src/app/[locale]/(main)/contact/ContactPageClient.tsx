@@ -11,6 +11,7 @@ import { Link } from "@/i18n/routing";
 import SEOHead from "@/components/SEOHead";
 import { generatePageMeta } from "@/lib/seo";
 import { APP_CONFIG } from "@/lib/config";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 export default function ContactPage() {
   const t = useTranslations("contact");
@@ -96,7 +97,7 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="text-lg mt-0.5">💬</span>
+                  <WhatsAppIcon className="w-5 h-5 mt-0.5 text-green-400 flex-shrink-0" />
                   <div>
                     <div className="text-white font-medium">{t("whatsappLabel")}</div>
                     <a href={`https://wa.me/${APP_CONFIG.WA_PHONE}`} target="_blank"

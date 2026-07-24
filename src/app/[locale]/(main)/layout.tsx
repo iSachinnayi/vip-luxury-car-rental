@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
 import SchemaOrg from "@/components/SchemaOrg";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 export default async function MainLayout({
   children,
@@ -24,6 +25,7 @@ export default async function MainLayout({
       <Footer />
       <CookieConsent />
       <SchemaOrg locale={locale} />
+      <FloatingWhatsApp />
     </>
   );
 }

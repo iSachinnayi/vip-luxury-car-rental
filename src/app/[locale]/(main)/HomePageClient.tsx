@@ -661,16 +661,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════ */}
-      {/*  FLOATING WHATSAPP                         */}
-      {/* ════════════════════════════════════════════ */}
-      <motion.a href="https://wa.me/971501564849" target="_blank"
-        initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 2, type: "spring", stiffness: 200 }}
-        whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-green-500 
-                   flex items-center justify-center text-2xl shadow-lg 
-                   shadow-green-500/30 hover:shadow-green-500/50 hover:bg-green-400 transition-all"
-        title="Chat on WhatsApp">💬</motion.a>
     </main>
   );
 }
