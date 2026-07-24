@@ -54,7 +54,7 @@ export default function Footer() {
           {/* Brand */}
           <motion.div variants={fadeUp} className="space-y-4">
             <Link href="/" className="inline-block">
-              <SiteLogo showTagline size="sm" link={false} />
+              <SiteLogo showTagline size="md" link={false} />
             </Link>
 
             {/* Animated gold divider */}
