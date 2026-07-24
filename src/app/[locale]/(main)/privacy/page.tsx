@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════
 //  Privacy Policy — VIP Luxury Car Rental Dubai
-//  Premium formatted with proper section hierarchy
+//  Based on industry-standard privacy policy
 // ═══════════════════════════════════════════════
 
 import type { Metadata } from "next/types";
@@ -22,14 +22,18 @@ export default async function PrivacyPage() {
   const t = await getTranslations("privacy");
   const sections = [
     { id: "introduction", label: t("s1Label") },
-    { id: "information-we-collect", label: t("s2Label") },
-    { id: "how-we-use-your-information", label: t("s3Label") },
-    { id: "log-files", label: t("s4Label") },
-    { id: "cookies-and-web-beacons", label: t("s5Label") },
-    { id: "your-data-protection-rights-gdpr", label: t("s6Label") },
-    { id: "children-s-information", label: t("s7Label") },
-    { id: "changes-to-this-privacy-policy", label: t("s8Label") },
-    { id: "contact-us", label: t("s9Label") },
+    { id: "consent", label: t("s2Label") },
+    { id: "information-we-collect", label: t("s3Label") },
+    { id: "how-we-use-your-information", label: t("s4Label") },
+    { id: "log-files", label: t("s5Label") },
+    { id: "cookies-and-web-beacons", label: t("s6Label") },
+    { id: "advertising-partners", label: t("s7Label") },
+    { id: "third-party-policies", label: t("s8Label") },
+    { id: "ccpa-rights", label: t("s9Label") },
+    { id: "gdpr-rights", label: t("s10Label") },
+    { id: "childrens-information", label: t("s11Label") },
+    { id: "policy-changes", label: t("s12Label") },
+    { id: "contact-us", label: t("s13Label") },
   ];
 
   const parseList = (key: string) => JSON.parse(t(key));
@@ -48,101 +52,114 @@ export default async function PrivacyPage() {
 
       <LegalDivider />
 
-      {/* ─── 2. Information We Collect ─── */}
+      {/* ─── 2. Consent ─── */}
       <LegalSection title={t("s2Title")} number={2}>
         <p>{t("s2p1")}</p>
-        <div className="p-4 rounded-xl bg-white/[0.03] border border-white/[0.05]">
-          <h4 className="text-gray-300 text-sm font-semibold mb-3">{t("s2sub1")}</h4>
-          <LegalList items={parseList("s2list1")} />
-        </div>
-        <div className="p-4 rounded-xl bg-white/[0.03] border border-white/[0.05]">
-          <h4 className="text-gray-300 text-sm font-semibold mb-3">{t("s2sub2")}</h4>
-          <LegalList items={parseList("s2list2")} />
-        </div>
       </LegalSection>
 
       <LegalDivider />
 
-      {/* ─── 3. How We Use Your Information ─── */}
+      {/* ─── 3. Information We Collect ─── */}
       <LegalSection title={t("s3Title")} number={3}>
         <p>{t("s3p1")}</p>
-        <div className="grid md:grid-cols-2 gap-3">
-          {parseList("s3items").map((item: string, i: number) => (
-            <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04]">
-              <span className="w-1.5 h-1.5 rounded-full bg-gold/40 mt-1.5 shrink-0" />
-              <span className="text-gray-400 text-sm">{item}</span>
-            </div>
-          ))}
-        </div>
+        <p>{t("s3p2")}</p>
+        <p>{t("s3p3")}</p>
       </LegalSection>
 
       <LegalDivider />
 
-      {/* ─── 4. Log Files ─── */}
+      {/* ─── 4. How We Use Your Information ─── */}
       <LegalSection title={t("s4Title")} number={4}>
         <p>{t("s4p1")}</p>
         <LegalList items={parseList("s4list")} />
-        <p>{t("s4p2")}</p>
       </LegalSection>
 
       <LegalDivider />
 
-      {/* ─── 5. Cookies ─── */}
+      {/* ─── 5. Log Files ─── */}
       <LegalSection title={t("s5Title")} number={5}>
         <p>{t("s5p1")}</p>
-        <LegalList items={parseList("s5list")} />
-        <p>{t("s5p2")}</p>
       </LegalSection>
 
       <LegalDivider />
 
-      {/* ─── 6. GDPR Rights ─── */}
+      {/* ─── 6. Cookies and Web Beacons ─── */}
       <LegalSection title={t("s6Title")} number={6}>
         <p>{t("s6p1")}</p>
+      </LegalSection>
+
+      <LegalDivider />
+
+      {/* ─── 7. Advertising Partners ─── */}
+      <LegalSection title={t("s7Title")} number={7}>
+        <p>{t("s7p1")}</p>
+        <p>{t("s7p2")}</p>
+        <p>{t("s7p3")}</p>
+      </LegalSection>
+
+      <LegalDivider />
+
+      {/* ─── 8. Third Party Policies ─── */}
+      <LegalSection title={t("s8Title")} number={8}>
+        <p>{t("s8p1")}</p>
+      </LegalSection>
+
+      <LegalDivider />
+
+      {/* ─── 9. CCPA Rights ─── */}
+      <LegalSection title={t("s9Title")} number={9}>
+        <p>{t("s9p1")}</p>
+        <LegalList items={parseList("s9list")} />
+        <p className="mt-3">{t("s9p2")}</p>
+      </LegalSection>
+
+      <LegalDivider />
+
+      {/* ─── 10. GDPR Rights ─── */}
+      <LegalSection title={t("s10Title")} number={10}>
+        <p>{t("s10p1")}</p>
         <div className="space-y-3">
-          {parseList("s6rights").map((item: string, i: number) => {
-            const [right, ...descParts] = item.split(": ");
+          {parseList("s10list").map((item: string, i: number) => {
+            const [right, ...descParts] = item.split(" - ");
             return (
               <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04]">
                 <span className="w-1.5 h-1.5 rounded-full bg-gold/40 mt-1.5 shrink-0" />
                 <div>
                   <span className="text-gray-300 text-sm font-medium">{right}: </span>
-                  <span className="text-gray-400 text-sm">{descParts.join(": ")}</span>
+                  <span className="text-gray-400 text-sm">{descParts.join(" - ")}</span>
                 </div>
               </div>
             );
           })}
         </div>
-        <p>{t("s6p2")}</p>
+        <p className="mt-3">{t("s10p2")}</p>
       </LegalSection>
 
       <LegalDivider />
 
-      {/* ─── 7. Children's Information ─── */}
-      <LegalSection title={t("s7Title")} number={7}>
-        <p>{t("s7p1")}</p>
-        <p>{t("s7p2")}</p>
+      {/* ─── 11. Children's Information ─── */}
+      <LegalSection title={t("s11Title")} number={11}>
+        <p>{t("s11p1")}</p>
+        <p>{t("s11p2")}</p>
       </LegalSection>
 
       <LegalDivider />
 
-      {/* ─── 8. Changes ─── */}
-      <LegalSection title={t("s8Title")} number={8}>
-        <p>{t("s8p1")}</p>
-        <LegalList items={parseList("s8list")} />
-        <p>{t("s8p2")}</p>
+      {/* ─── 12. Changes to This Privacy Policy ─── */}
+      <LegalSection title={t("s12Title")} number={12}>
+        <p>{t("s12p1")}</p>
       </LegalSection>
 
       <LegalDivider />
 
-      {/* ─── 9. Contact Us ─── */}
-      <LegalSection title={t("s9Title")} number={9}>
-        <p>{t("s9p1")}</p>
+      {/* ─── 13. Contact Us ─── */}
+      <LegalSection title={t("s13Title")} number={13}>
+        <p>If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us.</p>
         <LegalContactCard items={[
-          { label: "Email", value: t("s9email"), href: "mailto:booking@vipluxurycarrental.com" },
-          { label: "Phone", value: t("s9phone"), href: "tel:+971501564849" },
-          { label: "WhatsApp", value: t("s9whatsapp"), href: "https://wa.me/971501564849" },
-          { label: "Address", value: t("s9address") },
+          { label: "Email", value: "booking@vipluxurycarrental.com", href: "mailto:booking@vipluxurycarrental.com" },
+          { label: "Phone", value: "+971 50 156 4849", href: "tel:+971501564849" },
+          { label: "WhatsApp", value: "+971 50 156 4849", href: "https://wa.me/971501564849" },
+          { label: "Address", value: "Al Barsha, Near Mall of Emirates, Dubai, UAE" },
         ]} />
       </LegalSection>
     </LegalPageLayout>
