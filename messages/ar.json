@@ -145,7 +145,7 @@
     "freeCancellation": "إلغاء مجاني",
     "unlimited": "غير محدود",
     "available": "متوفر",
-    "noDepositAvailable": "بدون إيداع",
+    "noDepositAvailable": "بدون إيداع مطلوب",
     "rentWithCrypto": "الإيجار باستخدام العملات المشفرة",
     "payCrypto": "الدفع باستخدام BTC · ETH · USDT",
     "cryptoDesc": "ادفع باستخدام البيتكوين والإيثريوم وUSDT وغيرها. تأكيد فوري، بدون أي رسوم خفية.",

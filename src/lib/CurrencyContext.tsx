@@ -43,7 +43,7 @@ export function CurrencyProvider({ children }: { children: ReactNode }) {
   };
 
   const c = CURRENCY_MAP[code] || CURRENCY_MAP.AED;
-  const fmt = (v: number) => (v * c.rate).toFixed(2);
+  const fmt = (v: number) => Math.round(v * c.rate).toLocaleString();
 
   return (
     <CurrencyContext.Provider value={{ code, symbol: c.symbol, rate: c.rate, setCurrency, allCurrencies: CURRENCY_MAP, fmt }}>

@@ -108,7 +108,7 @@ export default function CarCardV7({ car, index = 0 }: Props) {
               <span className="text-gray-500 text-[11px]">/{t('perHour')}</span>
             </div>
             <span className="text-xs font-medium text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-md border border-emerald-500/15">
-              {car.deposit?.no_deposit_fee ? t('noDepositAvailable') : t('depositOptions')}
+              {t('noDepositAvailable')}
             </span>
           </div>
         </div>
