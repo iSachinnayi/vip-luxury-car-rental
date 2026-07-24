@@ -24,13 +24,14 @@ export default function SiteLogo({
   const [imgW, imgH] = size === "sm" ? [150, 65] : [180, 80];
 
   const logo = (
-    <div className={`relative flex-shrink-0 overflow-hidden bg-dark ${className}`}
+    <div className={`relative flex-shrink-0 overflow-hidden ${className}`}
       style={{ width: imgW, height: imgH }}>
       <Image
         src="/images/new-vip-logo.png"
         alt="VIP Luxury Car Rental Dubai"
         fill
-        className="object-contain"
+        className="object-cover"
+        style={{ objectPosition: "50% 50%" }}
         priority
         sizes={`${imgW}px`}
       />
