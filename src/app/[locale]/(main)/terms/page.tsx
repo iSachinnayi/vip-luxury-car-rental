@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════
 //  Terms & Conditions — VIP Luxury Car Rental Dubai
-//  Premium formatted with proper section hierarchy
+//  Based on industry-standard rental terms
 // ═══════════════════════════════════════════════
 
 import type { Metadata } from "next/types";
@@ -21,16 +21,19 @@ export async function generateMetadata() {
 export default async function TermsPage() {
   const t = await getTranslations("terms");
   const sections = [
-    { id: "introduction", label: t("s1Label") },
-    { id: "booking-payment-policy", label: t("s2Label") },
-    { id: "cancellation-refund-policy", label: t("s3Label") },
-    { id: "rental-period-vehicle-return", label: t("s4Label") },
-    { id: "general-terms-conditions", label: t("s5Label") },
-    { id: "geographic-borders", label: t("s6Label") },
-    { id: "kilometer-allowance", label: t("s7Label") },
-    { id: "insurance-accidents-damages", label: t("s8Label") },
-    { id: "other-payments-fees", label: t("s9Label") },
-    { id: "contact-us", label: t("s10Label") },
+    { id: "online-payment-policy", label: t("s1Label") },
+    { id: "privacy-policy", label: t("s2Label") },
+    { id: "cancellation-policy", label: t("s3Label") },
+    { id: "refund-policy", label: t("s4Label") },
+    { id: "no-show-policy", label: t("s5Label") },
+    { id: "modifications-reservations", label: t("s6Label") },
+    { id: "general-terms-conditions", label: t("s7Label") },
+    { id: "geographic-borders", label: t("s8Label") },
+    { id: "kilometres", label: t("s9Label") },
+    { id: "insurance-accidents-damages", label: t("s10Label") },
+    { id: "rental-period-vehicle-return", label: t("s11Label") },
+    { id: "other-payments-fees", label: t("s12Label") },
+    { id: "general-terms", label: t("s13Label") },
   ];
 
   const parseList = (key: string) => JSON.parse(t(key));
@@ -40,113 +43,117 @@ export default async function TermsPage() {
       lastUpdated={t("lastUpdated")}
       sections={sections}
     >
-      {/* ─── 1. Introduction ─── */}
+      {/* ─── 1. Online Payment Policy ─── */}
       <LegalSection title={t("s1Title")} number={1}>
         <p>{t("s1p1")}</p>
-        <p>{t("s1p2")}</p>
-        <div className="p-4 rounded-xl bg-amber-500/5 border border-amber-500/10 text-amber-400 text-sm">{t("s1warning")}</div>
-        <p>{t("s1p3")}</p>
       </LegalSection>
 
       <LegalDivider />
 
-      {/* ─── 2. Booking & Payment ─── */}
+      {/* ─── 2. Privacy Policy ─── */}
       <LegalSection title={t("s2Title")} number={2}>
         <p>{t("s2p1")}</p>
-        <LegalSubSection title={t("s2sub1")}>
-          <LegalList items={parseList("s2list1")} />
-        </LegalSubSection>
-        <LegalSubSection title={t("s2sub2")}>
-          <p>{t("s2p2")}</p>
-        </LegalSubSection>
       </LegalSection>
 
       <LegalDivider />
 
-      {/* ─── 3. Cancellation & Refund ─── */}
+      {/* ─── 3. Cancellation Policy ─── */}
       <LegalSection title={t("s3Title")} number={3}>
-        <p>{t("s3p1")}</p>
-        <LegalSubSection title={t("s3sub1")}>
-          <LegalList items={parseList("s3list1")} />
-        </LegalSubSection>
-        <LegalSubSection title={t("s3sub2")}>
-          <LegalList items={parseList("s3list2")} />
-        </LegalSubSection>
+        <LegalList items={parseList("s3list")} />
       </LegalSection>
 
       <LegalDivider />
 
-      {/* ─── 4. Rental Period ─── */}
+      {/* ─── 4. Refund Policy ─── */}
       <LegalSection title={t("s4Title")} number={4}>
         <LegalList items={parseList("s4list")} />
       </LegalSection>
 
       <LegalDivider />
 
-      {/* ─── 5. General Terms ─── */}
+      {/* ─── 5. No-Show Policy ─── */}
       <LegalSection title={t("s5Title")} number={5}>
-        <div className="space-y-2">
-          {parseList("s5items").map((item: string, i: number) => (
-            <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04]">
-              <span className="w-1.5 h-1.5 rounded-full bg-gold/40 mt-1.5 shrink-0" />
-              <span className="text-gray-400 text-sm">{item}</span>
-            </div>
-          ))}
-        </div>
+        <LegalList items={parseList("s5list")} />
       </LegalSection>
 
       <LegalDivider />
 
-      {/* ─── 6. Geographic Borders ─── */}
+      {/* ─── 6. Modifications to Reservations ─── */}
       <LegalSection title={t("s6Title")} number={6}>
-        <p>{t("s6p1")}</p>
-        <div className="p-4 rounded-xl bg-red-500/5 border border-red-500/10 text-red-400 text-sm">{t("s6warning")}</div>
+        <LegalList items={parseList("s6list")} />
       </LegalSection>
 
       <LegalDivider />
 
-      {/* ─── 7. Kilometers ─── */}
+      {/* ─── 7. General Terms and Conditions ─── */}
       <LegalSection title={t("s7Title")} number={7}>
-        <p>{t("s7p1")}</p>
-      </LegalSection>
-
-      <LegalDivider />
-
-      {/* ─── 8. Insurance ─── */}
-      <LegalSection title={t("s8Title")} number={8}>
-        <LegalSubSection title={t("s8sub1")}>
-          <LegalList items={parseList("s8list1")} />
-        </LegalSubSection>
-        <LegalSubSection title={t("s8sub2")}>
-          <LegalList items={parseList("s8list2")} />
-        </LegalSubSection>
-      </LegalSection>
-
-      <LegalDivider />
-
-      {/* ─── 9. Other Fees ─── */}
-      <LegalSection title={t("s9Title")} number={9}>
-        <div className="space-y-2">
-          {parseList("s9items").map((item: string, i: number) => (
-            <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04]">
-              <span className="w-1.5 h-1.5 rounded-full bg-gold/40 mt-1.5 shrink-0" />
-              <span className="text-gray-400 text-sm">{item}</span>
-            </div>
-          ))}
+        <LegalList items={parseList("s7list")} />
+        <div className="mt-4 p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+          <p className="text-xs font-semibold text-gold/60 uppercase tracking-wider mb-2">Accepted Countries</p>
+          <p className="text-sm text-gray-400 leading-relaxed">{t("s7countries")}</p>
         </div>
       </LegalSection>
 
       <LegalDivider />
 
-      {/* ─── 10. Contact Us ─── */}
+      {/* ─── 8. Geographic Borders ─── */}
+      <LegalSection title={t("s8Title")} number={8}>
+        <LegalList items={parseList("s8list")} />
+      </LegalSection>
+
+      <LegalDivider />
+
+      {/* ─── 9. Kilometres ─── */}
+      <LegalSection title={t("s9Title")} number={9}>
+        <LegalList items={parseList("s9list")} />
+      </LegalSection>
+
+      <LegalDivider />
+
+      {/* ─── 10. Insurance, Accidents, and Damages ─── */}
       <LegalSection title={t("s10Title")} number={10}>
-        <p>{t("s10p1")}</p>
-        <LegalContactCard items={[
-          { label: "Email", value: t("s10email"), href: "mailto:booking@vipluxurycarrental.com" },
-          { label: "Phone", value: t("s10phone"), href: "tel:+971501564849" },
-          { label: "WhatsApp", value: t("s10whatsapp"), href: "https://wa.me/971501564849" },
-          { label: "Address", value: t("s10address") },
-        ]} />
+        <LegalList items={parseList("s10list")} />
+      </LegalSection>
+
+      <LegalDivider />
+
+      {/* ─── 11. Rental Period and Vehicle Returning ─── */}
+      <LegalSection title={t("s11Title")} number={11}>
+        <LegalList items={parseList("s11list")} />
+      </LegalSection>
+
+      <LegalDivider />
+
+      {/* ─── 12. Other Payments and Fees ─── */}
+      <LegalSection title={t("s12Title")} number={12}>
+        <LegalSubSection title={t("s12sub1Label")}>
+          <LegalList items={parseList("s12sub1List")} />
+        </LegalSubSection>
+        <LegalSubSection title={t("s12sub2Label")}>
+          <LegalList items={parseList("s12sub2List")} />
+        </LegalSubSection>
+        <LegalSubSection title={t("s12sub3Label")}>
+          <LegalList items={parseList("s12sub3List")} />
+        </LegalSubSection>
+        <LegalSubSection title={t("s12sub4Label")}>
+          <LegalList items={parseList("s12sub4List")} />
+        </LegalSubSection>
+        <LegalSubSection title={t("s12sub5Label")}>
+          <LegalList items={parseList("s12sub5List")} />
+        </LegalSubSection>
+        <LegalSubSection title={t("s12sub6Label")}>
+          <LegalList items={parseList("s12sub6List")} />
+        </LegalSubSection>
+        <LegalSubSection title={t("s12sub7Label")}>
+          <LegalList items={parseList("s12sub7List")} />
+        </LegalSubSection>
+      </LegalSection>
+
+      <LegalDivider />
+
+      {/* ─── 13. General Terms ─── */}
+      <LegalSection title={t("s13Title")} number={13}>
+        <LegalList items={parseList("s13list")} />
       </LegalSection>
     </LegalPageLayout>
   );
