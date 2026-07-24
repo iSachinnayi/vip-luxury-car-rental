@@ -21,8 +21,9 @@ export default function SiteLogo({
   link = false,
   size = "md",
 }: SiteLogoProps) {
-  const [imgW, imgH] = size === "sm" ? [180, 36] : [220, 48];
-  const crop = size === "sm" ? '50%' : '50%';
+  // Logo natural ratio: 1094×371 ≈ 2.95:1
+  // Container dimensions match this ratio to avoid cropping
+  const [imgW, imgH] = size === "sm" ? [160, 54] : [200, 68];
 
   const logo = (
     <div className={`relative flex-shrink-0 overflow-hidden ${className}`}
@@ -31,8 +32,7 @@ export default function SiteLogo({
         src="/images/vip-logo.png"
         alt="VIP Luxury Car Rental Dubai"
         fill
-        className="object-cover"
-        style={{ objectPosition: crop }}
+        className="object-contain"
         priority
         sizes={`${imgW}px`}
       />
